@@ -1,0 +1,151 @@
+/* Fundraiser Vaadin App - Theme Styles */
+
+/* =========================================================
+   Hero Section (Requirement 2.2, 2.3)
+   Full-width, 60 vh tall, image covers the area
+   ========================================================= */
+.hero-section {
+  width: 100%;
+  height: 60vh;
+  overflow: hidden;
+}
+
+.hero-section img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* =========================================================
+   Text Block (Requirements 3.2, 3.3, 3.4)
+   Full-width, readable typography, warm fundraiser palette
+   ========================================================= */
+.text-block {
+  width: 100%;
+  padding: 2rem;
+  box-sizing: border-box;
+
+  /* Readability: constrain line length and use a warm serif stack */
+  max-width: 860px;
+  margin-left: auto;
+  margin-right: auto;
+
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.05rem;
+  line-height: 1.75;
+
+  /* Warm fundraiser colour palette */
+  color: #3b2a1a;
+  background-color: #fffaf5;
+}
+
+.text-block h2,
+.text-block h3 {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: #b5451b; /* warm terracotta / call-to-action accent */
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.text-block p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+/* =========================================================
+   Hex Validator Component — centred panel
+   ========================================================= */
+.hex-validator {
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2rem;
+  box-sizing: border-box;
+  align-items: center;
+}
+
+.hex-validator vaadin-text-area {
+  width: 100%;
+}
+
+/* =========================================================
+   Check Button — overlay spinner (Requirement 8.1)
+   .check-btn-wrapper gives the button a positioning context.
+   .loading::after overlays a spinning circle over the button face,
+   hiding the label while validation is in progress.
+   ========================================================= */
+.check-btn-wrapper {
+  position: relative;
+}
+
+.loading {
+  pointer-events: none;
+}
+
+/* Dim the button label text while loading */
+.loading::part(label) {
+  opacity: 0;
+}
+
+/* Spinning circle centred over the button face */
+.loading::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 1.3em;
+  height: 1.3em;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: btn-spin 0.7s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes btn-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* =========================================================
+   Result Display — inline next to the button (Requirement 10.5)
+   ========================================================= */
+.result-display {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-left: 0.75rem;
+}
+
+/* =========================================================
+   Validation Result Display (Requirements 10.1, 10.2)
+   ========================================================= */
+.result-ok {
+  color: green;
+  font-weight: bold;
+}
+
+.result-fail {
+  color: red;
+  font-weight: bold;
+}
+
+/* =========================================================
+   Responsive breakpoint — mobile (≤ 600 px)
+   Ensures TextBlock and HexValidatorComponent stay readable
+   (Requirements 3.3, 3.4, 4.1, 4.2, 4.3)
+   ========================================================= */
+@media (max-width: 600px) {
+  .hero-section {
+    height: 40vh;
+  }
+
+  .text-block {
+    padding: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .text-block h2,
+  .text-block h3 {
+    font-size: 1.1rem;
+  }
+}

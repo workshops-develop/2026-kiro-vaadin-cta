@@ -1,0 +1,5 @@
+node_modules/
+target/classes/
+target/generated-sources/
+target/maven-status/
+git a
